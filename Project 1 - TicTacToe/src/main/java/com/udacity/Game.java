@@ -161,12 +161,57 @@ public class Game {
             result = oWin;
         }
 
+        if (lineValidator('x', grid)) {
+            result = xWin;
+        }
+
+        if (lineValidator('o', grid) ){
+            result = oWin;
+        }
+
+        if (lineVerticalValidator('x', grid)) {
+            result = xWin;
+        }
+
+        if (lineVerticalValidator('o', grid) ){
+            result = oWin;
+        }
+
+
         //Student code goes here ...
         return result;
     }
 
-    private  boolean lineValidator(char player, char[][]grid) {
-        return false;
+    private  Boolean lineValidator(char player, char[][]grid) {
+
+            Boolean result = false;
+            for (int i = 0; i < 3; i++) {
+
+                char location1 = grid[i][0];
+                char location2 = grid[i][1];
+                char location3 = grid[i][2];
+
+                if( location1 == player && location1 == location2  && location2 == location3) {
+                    result = true;
+                }
+            }
+            return result;
+    }
+
+    private  Boolean lineVerticalValidator(char player, char[][]grid) {
+
+        Boolean result = false;
+        for (int i = 0; i < 3; i++) {
+
+            char location1 = grid[0][i];
+            char location2 = grid[1][i];
+            char location3 = grid[2][i];
+
+            if( location1 == player && location1 == location2  && location2 == location3) {
+                result = true;
+            }
+        }
+        return result;
     }
 
     private Boolean diagonalValidator(char player, char[][]grid) {
