@@ -152,6 +152,7 @@ public class Game {
         String result = "None";
         String xWin = "x wins";
         String oWin = "o wins";
+        String tie = "tie";
 
         if (diagonalValidator('x', grid)) {
             result = xWin;
@@ -177,6 +178,9 @@ public class Game {
             result = oWin;
         }
 
+        if (gameTieValidator(grid) && result == "None") {
+            result = tie;
+        }
 
         //Student code goes here ...
         return result;
@@ -214,6 +218,34 @@ public class Game {
         return result;
     }
 
+    private Boolean gameTieValidator(char[][]grid) {
+        Boolean result = false;
+            char location1 = grid[0][0];
+            char location2 = grid[0][1];
+            char location3 = grid[0][2];
+
+            char location4 = grid[1][0];
+            char location5 = grid[1][1];
+            char location6 = grid[1][2];
+
+            char location7 = grid[2][0];
+            char location8 = grid[2][1];
+            char location9 = grid[2][2];
+
+            if(location1 != '-' && location2 != '-' && location3 != '-')
+            {
+                if(location4 != '-' && location5 != '-' && location6 != '-')
+                {
+                    if(location7 != '-' && location8 != '-' && location9 != '-')
+                    {
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
+    }
+
     private Boolean diagonalValidator(char player, char[][]grid) {
         char[] winer = new char[3];
         Boolean result = false;
@@ -235,6 +267,15 @@ public class Game {
 
         return result;
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Main function
